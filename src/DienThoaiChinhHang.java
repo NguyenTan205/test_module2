@@ -13,6 +13,17 @@ public class DienThoaiChinhHang extends SmartPhone {
     }
 
     public void setThoiGianBaoHanh(String thoiGianBaoHanh) {
+        try {
+            int ngay = Integer.parseInt(thoiGianBaoHanh);
+            if (ngay <= 0) {
+                throw new IllegalArgumentException("Thời gian bảo hành phải là số dương!");
+            }
+            if (ngay > 730) {
+                throw new IllegalArgumentException("Thời gian bảo hành không được quá 730 ngày!");
+            }
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("Thời gian bảo hành phải là số nguyên!");
+        }
         this.thoiGianBaoHanh = thoiGianBaoHanh;
     }
 
@@ -21,6 +32,10 @@ public class DienThoaiChinhHang extends SmartPhone {
     }
 
     public void setPhamViBaoHanh(String phamViBaoHanh) {
+        String lower = phamViBaoHanh.trim().toLowerCase();
+        if (!lower.equals("toan quoc") && !lower.equals("quoc te")) {
+            throw new IllegalArgumentException("Phạm vi bảo hành chỉ được là 'toan quoc' hoặc 'quoc te'!");
+        }
         this.phamViBaoHanh = phamViBaoHanh;
     }
 

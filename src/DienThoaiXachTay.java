@@ -13,6 +13,9 @@ public class DienThoaiXachTay extends SmartPhone{
     }
 
     public void setQuocGiaXachTay(String quocGiaXachTay) {
+        if (quocGiaXachTay.trim().equalsIgnoreCase("viet nam")) {
+            throw new IllegalArgumentException("Quốc gia xách tay không được là 'Viet Nam'!");
+        }
         this.quocGiaXachTay = quocGiaXachTay;
     }
 
@@ -21,6 +24,10 @@ public class DienThoaiXachTay extends SmartPhone{
     }
 
     public void setTrangThai(String trangThai) {
+        String lower = trangThai.trim().toLowerCase();
+        if (!lower.equals("da sua chua") && !lower.equals("chua sua chua")) {
+            throw new IllegalArgumentException("Trạng thái chỉ được là 'Da sua chua' hoặc 'Chua sua chua'!");
+        }
         this.trangThai = trangThai;
     }
 

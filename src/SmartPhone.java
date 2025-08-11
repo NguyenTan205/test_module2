@@ -40,6 +40,9 @@ public abstract class SmartPhone implements Serializable {
     }
 
     public void setPrice(double price) {
+        if (price <= 0) {
+            throw new IllegalArgumentException("Giá bán phải là số dương!");
+        }
         this.price = price;
     }
 
@@ -60,6 +63,7 @@ public abstract class SmartPhone implements Serializable {
     }
 
     public abstract String info();
+
 
     @Override
     public String toString() {
