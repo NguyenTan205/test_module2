@@ -6,18 +6,18 @@ public abstract class SmartPhone implements Serializable {
     private double price;
     private int quantity;
     private String brand;
+    public static int counter = 1;
 
     public SmartPhone() {
     }
 
     public SmartPhone(int id, String name, double price, int quantity, String brand) {
-        this.setId(id);
+        this.id = counter++;
         this.setName(name);
         this.setPrice(price);
         this.setQuantity(quantity);
         this.setBrand(brand);
     }
-
 
     public int getId() {
         return id;

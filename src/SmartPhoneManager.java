@@ -43,11 +43,11 @@ public class SmartPhoneManager {
                 if ("chinhhang".equalsIgnoreCase(type)) {
                     String thoiGianBaoHanh = fields[6];
                     String phamViBaoHanh = fields[7];
-                    smartPhonesList.add(new DienThoaiChinhHang(id, name, price, quantity, brand, thoiGianBaoHanh, phamViBaoHanh));
+                    smartPhonesList.add(new DienThoaiChinhHang(name, price, quantity, brand, thoiGianBaoHanh, phamViBaoHanh));
                 } else if ("xachtay".equalsIgnoreCase(type)) {
                     String quocGiaXachTay = fields[6];
                     String trangThai = fields[7];
-                    smartPhonesList.add(new DienThoaiXachTay(id, name, price, quantity, brand, quocGiaXachTay, trangThai));
+                    smartPhonesList.add(new DienThoaiXachTay(name, price, quantity, brand, quocGiaXachTay, trangThai));
                 }
             }
         } catch (IOException e) {
@@ -87,6 +87,7 @@ public class SmartPhoneManager {
     // addSmartPhone
     public void addSmartPhone(SmartPhone smartPhone) {
         smartPhonesList.add(smartPhone);
+        SmartPhone.counter++;
         exportDatatoFileCsv(filePath);
     }
 
@@ -102,6 +103,20 @@ public class SmartPhoneManager {
         boolean found = false;
         for (SmartPhone sp : smartPhonesList) {
             if (String.valueOf(sp.getId()).contains(keyword)) {
+                System.out.println(sp);
+                found = true;
+            }
+        }
+        if (!found) {
+            System.out.println("Không tìm thấy điện thoại với từ khóa ID: " + keyword);
+        }
+    }
+
+    // searchPhoneByName
+    public void searchPhoneByName(String keyword) {
+        boolean found = false;
+        for (SmartPhone sp : smartPhonesList) {
+            if (sp.getName().toLowerCase().contains(keyword.toLowerCase())) {
                 System.out.println(sp);
                 found = true;
             }

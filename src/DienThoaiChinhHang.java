@@ -2,8 +2,8 @@ public class DienThoaiChinhHang extends SmartPhone {
     private String thoiGianBaoHanh;
     private String phamViBaoHanh;
 
-    public DienThoaiChinhHang(int id, String name, double price, int quantity, String brand, String thoiGianBaoHanh, String phamViBaoHanh) {
-        super(id, name, price, quantity, brand);
+    public DienThoaiChinhHang(String name, double price, int quantity, String brand, String thoiGianBaoHanh, String phamViBaoHanh) {
+        super(SmartPhone.counter, name, price, quantity, brand);
         this.thoiGianBaoHanh = thoiGianBaoHanh;
         this.phamViBaoHanh = phamViBaoHanh;
     }

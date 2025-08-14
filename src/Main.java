@@ -14,7 +14,8 @@ public class Main {
             System.out.println("2. Thêm mới điện thoại xách tay");
             System.out.println("3. Xoá");
             System.out.println("4. Hiển thị toàn bộ danh sách điện thoại");
-            System.out.println("5. TÌm kiếm điện thoại");
+            System.out.println("5. TÌm kiếm điện thoại theo ID");
+            System.out.println("6. Tìm kiếm điện thoại theo tên");
             System.out.println("0. Thoát chương trình");
             System.out.println("Chọn chức năng: ");
 
@@ -55,6 +56,11 @@ public class Main {
                     String keyword = sc.nextLine();
                     manager.searchPhoneByIdKeyword(keyword);
                     break;
+                case 6:
+                    System.out.println("Nhập từ khoá tên cần tìm: ");
+                    String keywordName = sc.nextLine();
+                    manager.searchPhoneByName(keywordName);
+                    break;
                 case 0:
                     System.out.println("Thank you!!!");
                     break;
@@ -66,8 +72,6 @@ public class Main {
 
     // Hàm nhập điện thoại chính hãng
     public static void themChinhHang(SmartPhoneManager manager, Scanner sc) {
-        System.out.print("Nhập ID: ");
-        int id = Integer.parseInt(sc.nextLine());
         System.out.print("Nhập tên: ");
         String name = sc.nextLine();
         System.out.print("Nhập giá: ");
@@ -81,14 +85,12 @@ public class Main {
         System.out.print("Nhập phạm vi bảo hành: ");
         String phamViBaoHanh = sc.nextLine();
 
-        manager.addSmartPhone(new DienThoaiChinhHang(id, name, price, quantity, brand, thoiGianBaoHanh, phamViBaoHanh));
+        manager.addSmartPhone(new DienThoaiChinhHang(name, price, quantity, brand, thoiGianBaoHanh, phamViBaoHanh));
         System.out.println("Đã thêm điện thoại chính hãng!");
     }
 
     // Hàm nhập điện thoại xách tay
     public static void themXachTay(SmartPhoneManager manager, Scanner sc) {
-        System.out.print("Nhập ID: ");
-        int id = Integer.parseInt(sc.nextLine());
         System.out.print("Nhập tên: ");
         String name = sc.nextLine();
         System.out.print("Nhập giá: ");
@@ -102,7 +104,7 @@ public class Main {
         System.out.print("Nhập trạng thái: ");
         String trangThai = sc.nextLine();
 
-        manager.addSmartPhone(new DienThoaiXachTay(id, name, price, quantity, brand, quocGiaXachTay, trangThai));
+        manager.addSmartPhone(new DienThoaiXachTay(name, price, quantity, brand, quocGiaXachTay, trangThai));
         System.out.println("Đã thêm điện thoại xách tay!");
     }
 }
